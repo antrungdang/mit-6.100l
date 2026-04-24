@@ -146,6 +146,34 @@ def hangman(secret_word, with_help):
     print("Welcome to Hangman!")
     print(f"I am thinking of a word that is {len(secret_word)} letters long.")
 
+    guesses_left = 10
+    letters_guessed = ""
+    available_letters = get_available_letters(letters_guessed)
+    word_progress = get_word_progress(secret_word, letters_guessed)
+
+    while True:
+        print("--------------")
+        print(f"You have {guesses_left} guesses left.")
+        print(f"Available letters: {available_letters}")
+        guess = input("Please guess a letter: ").lower()
+
+        if not guess.isalpha() or len(guess) != 1:
+            print(
+                f"Oops! That is not a valid letter. Please input a letter from the alphabet: {word_progress}"
+            )
+            continue
+
+        if guess not in letters_guessed:
+            letters_guessed += guess
+
+        if guess in secret_word:
+            word_progress = get_word_progress(secret_word, letters_guessed)
+            print(f"Good guess: {word_progress}")
+
+        else:
+            guesses_left -= 1
+            print(f"Oops! That letter is not in my word: {word_progress}")
+
 
 # When you've completed your hangman function, scroll down to the bottom
 # of the file and uncomment the lines to test
@@ -154,7 +182,7 @@ if __name__ == "__main__":
     # To test your game, uncomment the following three lines.
 
     secret_word = choose_word(wordlist)
-    with_help = False
+    with_help = True
     hangman(secret_word, with_help)
 
     # After you complete with_help functionality, change with_help to True
