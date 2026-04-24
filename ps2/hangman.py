@@ -1,7 +1,7 @@
 # Problem Set 2, hangman.py
 # Name: An Trung Dang
 # Collaborators: None
-# Time spent: 
+# Time spent:
 
 import random
 import string
@@ -12,6 +12,7 @@ import string
 
 WORDLIST_FILENAME = "words.txt"
 
+
 def load_words():
     """
     returns: list, a list of valid words. Words are strings of lowercase letters.
@@ -21,13 +22,14 @@ def load_words():
     """
     print("Loading word list from file...")
     # inFile: file
-    inFile = open(WORDLIST_FILENAME, 'r')
+    inFile = open(WORDLIST_FILENAME, "r")
     # line: string
     line = inFile.readline()
     # wordlist: list of strings
     wordlist = line.split()
     print(" ", len(wordlist), "words loaded.")
     return wordlist
+
 
 def choose_word(wordlist):
     """
@@ -37,6 +39,7 @@ def choose_word(wordlist):
     """
     return random.choice(wordlist)
 
+
 # -----------------------------------
 # END OF HELPER CODE
 # -----------------------------------
@@ -44,6 +47,7 @@ def choose_word(wordlist):
 
 # Load the list of words to be accessed from anywhere in the program
 wordlist = load_words()
+
 
 def has_player_won(secret_word, letters_guessed):
     """
@@ -70,8 +74,15 @@ def get_word_progress(secret_word, letters_guessed):
     returns: string, comprised of letters and asterisks (*) that represents
         which letters in secret_word have not been guessed so far
     """
-    # FILL IN YOUR CODE HERE AND DELETE "pass"
-    pass
+    word_progress = ""
+
+    for letter in secret_word:
+        if letter in letters_guessed:
+            word_progress += letter
+        else:
+            word_progress += "*"
+
+    return word_progress
 
 
 def get_available_letters(letters_guessed):
@@ -85,7 +96,6 @@ def get_available_letters(letters_guessed):
     """
     # FILL IN YOUR CODE HERE AND DELETE "pass"
     pass
-
 
 
 def hangman(secret_word, with_help):
@@ -131,7 +141,6 @@ def hangman(secret_word, with_help):
     pass
 
 
-
 # When you've completed your hangman function, scroll down to the bottom
 # of the file and uncomment the lines to test
 
@@ -153,4 +162,3 @@ if __name__ == "__main__":
     # when you submit your pset. However, please run ps2_student_tester.py
     # one more time before submitting to make sure all the tests pass.
     pass
-
