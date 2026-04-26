@@ -180,11 +180,11 @@ def get_tf(file_path):
     """
     word_list = text_to_list(load_file(file_path))
     freq_dict = get_frequencies(word_list)
-    num_word = len(word_list)
+    num_words = len(word_list)
     tf = {}
 
     for key, value in freq_dict.items():
-        tf[key] = value / num_word
+        tf[key] = value / num_words
 
     return tf
 
@@ -200,7 +200,23 @@ def get_idf(file_paths):
     with math.log10()
 
     """
-    pass
+    freq_dict = {}
+
+    for file_path in file_paths:
+        file_freq = get_frequencies(text_to_list(load_file(file_path)))
+        
+        for key in file_freq:
+            if key not in freq_dict:
+                freq_dict[key] = 0
+            freq_dict[key] += 1
+
+    num_files = len(file_paths)
+    idf = {}
+
+    for key, value in freq_dict.items():
+        idf[key] = math.log10(num_files / value)
+
+    return idf
 
 def get_tfidf(tf_file_path, idf_file_paths):
     """
