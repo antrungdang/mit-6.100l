@@ -7,7 +7,8 @@ Coursework for [MIT 6.100L](https://ocw.mit.edu/courses/6-100l-introduction-to-c
 ```
 ├── ps0/    # Problem Set 0 solution
 ├── ps1/    # Problem Set 1 solution
-└── ps2/    # Problem Set 2 solution
+├── ps2/    # Problem Set 2 solution
+└── ps3/    # Problem Set 3 solution
 ```
 
 ## Progress
@@ -15,7 +16,7 @@ Coursework for [MIT 6.100L](https://ocw.mit.edu/courses/6-100l-introduction-to-c
 - [x] Problem Set 0
 - [x] Problem Set 1
 - [x] Problem Set 2
-- [ ] Problem Set 3
+- [x] Problem Set 3
 - [ ] Problem Set 4
 - [ ] Problem Set 5
 
