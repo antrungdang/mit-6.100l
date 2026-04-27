@@ -19,8 +19,11 @@ def find_tree_height(tree):
     Output:
         The integer depth of the tree
     '''
-    # TODO: Remove pass and write your code here
-    pass
+    if tree is None:
+        return -1   # None will be the child of the leaf, so the height of the leaf is -1 + 1 = 0
+
+    return max(find_tree_height(tree.left), find_tree_height(tree.right)) + 1
+
 
 def is_heap(tree, compare_func):
     '''
@@ -35,7 +38,6 @@ def is_heap(tree, compare_func):
     '''
     # TODO: Remove pass and write your code here
     pass
-
 
 
 if __name__ == '__main__':
