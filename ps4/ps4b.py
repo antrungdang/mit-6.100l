@@ -175,4 +175,4 @@ class EncryptedMessage(Message):
         for i in pad:
             decryption_pad.append(-i)
         decrypted_message = self.apply_pad(decryption_pad)
-        return PlaintextMessage(decrypted_message, decryption_pad)
+        return PlaintextMessage(decrypted_message, pad)

@@ -1,6 +1,6 @@
 # Problem Set 4C
-# Name:
-# Collaborators:
+# Name: An Trung Dang
+# Collaborators: None
 
 import json
 import ps4b # Importing your work from Part B
@@ -80,7 +80,20 @@ def decrypt_message_try_pads(ciphertext, pads):
 
     Returns: (PlaintextMessage) A message with the decrypted ciphertext and the best pad
     '''
-    raise NotImplementedError  # delete this line and replace with your code here
+    word_list = load_words(WORDLIST_FILENAME)
+    best_count = 0
+    best_message = ""
+    for pad in pads:
+        count = 0
+        decrypted_message = ciphertext.decrypt_message(pad)
+        for word in decrypted_message.get_text().split():
+            if is_word(word_list, word):
+                count += 1
+        if count >= best_count:
+            best_count = count
+            best_message = decrypted_message
+    
+    return best_message
 
 
 def decode_story():
