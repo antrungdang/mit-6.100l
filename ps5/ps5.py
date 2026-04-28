@@ -153,7 +153,17 @@ def reveal_bw_image(filename):
     Returns:
         result: an Image object containing the hidden image
     """
-    pass
+    pixels = img_to_pix(filename)
+    lsb = []
+
+    for pixel in pixels:
+        lsb.append(extract_end_bits(1, pixel) * 255)
+
+    im = Image.open(filename)
+    hidden_im = Image.new(im.mode, im.size)
+    hidden_im.putdata(lsb)
+
+    return hidden_im
 
 
 def reveal_color_image(filename):
@@ -211,21 +221,21 @@ def main():
 
     # Uncomment the following lines to test part 1
 
-    im = Image.open('image_15.png')
-    width, height = im.size
-    pixels = img_to_pix('image_15.png')
+    # im = Image.open('image_15.png')
+    # width, height = im.size
+    # pixels = img_to_pix('image_15.png')
 
-    non_filtered_pixels = filter(pixels,'none')
-    im = pix_to_img(non_filtered_pixels, (width, height), 'RGB')
-    im.show()
+    # non_filtered_pixels = filter(pixels,'none')
+    # im = pix_to_img(non_filtered_pixels, (width, height), 'RGB')
+    # im.show()
 
-    red_filtered_pixels = filter(pixels,'red')
-    im2 = pix_to_img(red_filtered_pixels,(width,height), 'RGB')
-    im2.show()
+    # red_filtered_pixels = filter(pixels,'red')
+    # im2 = pix_to_img(red_filtered_pixels,(width,height), 'RGB')
+    # im2.show()
 
     # Uncomment the following lines to test part 2
-    #im = reveal_image('hidden1.bmp')
-    # im.show()
+    im = reveal_image('hidden1.bmp')
+    im.show()
 
     #im2 = reveal_image('hidden2.bmp')
     # im2.show()
