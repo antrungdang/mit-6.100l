@@ -102,7 +102,11 @@ def filter(pixels_list, color):
     returns: list of pixels in same format as earlier functions,
     transformed by matrix multiplication
     """
-    pass
+    filter_matrix = make_matrix(color)
+    filtered_pixels = []
+    for pixel in pixels_list:
+        filtered_pixels.append(tuple(int(i) for i in matrix_multiply(filter_matrix, pixel)))
+    return filtered_pixels
 
 
 def extract_end_bits(num_end_bits, pixel):
@@ -208,13 +212,13 @@ def main():
     width, height = im.size
     pixels = img_to_pix('image_15.png')
 
-    # non_filtered_pixels = filter(pixels,'none')
-    # im = pix_to_img(non_filtered_pixels, (width, height), 'RGB')
-    # im.show()
+    non_filtered_pixels = filter(pixels,'none')
+    im = pix_to_img(non_filtered_pixels, (width, height), 'RGB')
+    im.show()
 
-    # red_filtered_pixels = filter(pixels,'red')
-    # im2 = pix_to_img(red_filtered_pixels,(width,height), 'RGB')
-    # im2.show()
+    red_filtered_pixels = filter(pixels,'red')
+    im2 = pix_to_img(red_filtered_pixels,(width,height), 'RGB')
+    im2.show()
 
     # Uncomment the following lines to test part 2
     #im = reveal_image('hidden1.bmp')
