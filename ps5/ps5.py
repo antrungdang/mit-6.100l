@@ -88,7 +88,9 @@ def pix_to_img(pixels_list, size, mode):
     returns:
         img: Image object made from list of pixels
     """
-    pass
+    im = Image.new(mode, size)
+    im.putdata(pixels_list)
+    return im
 
 
 def filter(pixels_list, color):
@@ -202,16 +204,16 @@ def main():
 
     # Uncomment the following lines to test part 1
 
-    #im = Image.open('image_15.png')
-    #width, height = im.size
-    #pixels = img_to_pix('image_15.png')
+    im = Image.open('image_15.png')
+    width, height = im.size
+    pixels = img_to_pix('image_15.png')
 
-    #non_filtered_pixels = filter(pixels,'none')
-    #im = pix_to_img(non_filtered_pixels, (width, height), 'RGB')
+    # non_filtered_pixels = filter(pixels,'none')
+    # im = pix_to_img(non_filtered_pixels, (width, height), 'RGB')
     # im.show()
 
-    #red_filtered_pixels = filter(pixels,'red')
-    #im2 = pix_to_img(red_filtered_pixels,(width,height), 'RGB')
+    # red_filtered_pixels = filter(pixels,'red')
+    # im2 = pix_to_img(red_filtered_pixels,(width,height), 'RGB')
     # im2.show()
 
     # Uncomment the following lines to test part 2
